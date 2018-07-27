@@ -1,0 +1,28 @@
+<div class="row" *ngIf="paging != undefined">
+	<div class="col-md-4" *ngFor="let book of paging.data">
+		<div class="thumbnail">
+			<a routerLink="/detail/{{book.id}}">
+				<img src="{{ book.feature_image }}" alt="{{book.name}}" style="width:100%"></a>
+				<div class="caption">
+					<h4><a routerLink="/detail/{{book.id}}">{{ book.name }}</a></h4>
+					<p>{{ book.description }}</p>
+					<p>Category: <a routerLink="/cate-list/{{book.cate_id}}">{{ book.name_cate }}</a></p>
+					
+					<p>Price:
+						<strong>$ {{ book.price }}</strong>
+						
+					</p>
+					<p>Star: <ngb-rating [(rate)]="book.star"
+						[starTemplate]="t" 
+						[readonly]="true"
+						max="5" ></ngb-rating></p>
+
+				</div>
+
+			
+		</div>
+	</div>
+	<div class="col-md-12">
+			<ngb-pagination *ngIf="paging.total/12 > 1" [collectionSize]="paging.total" [(page)]="paging.current_page" [maxSize]="5" [rotate]="true" (pageChange)="onPager($event)" [ellipses]="true" [pageSize]="12" [boundaryLinks]="true"></ngb-pagination>
+  </div>
+</div>

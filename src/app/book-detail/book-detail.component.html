@@ -1,0 +1,19 @@
+<div class="row" *ngIf="book !== undefined">
+  <div class="col-md-12">
+    <img [src]="book.feature_image" class="img-thumbnail">
+
+    <h3 class="text-info">{{book.name}}</h3>
+    <h4>{{book.cate_name}}</h4>
+    <p>Price: $ {{book.price}}
+    </p>
+    <p>Star:
+      <ngb-rating [(rate)]="book.star" [starTemplate]="t" [readonly]="true" max="5"></ngb-rating>
+    </p>
+    <h3>Description</h3>
+    <div [innerHTML]="book.description"></div>
+
+
+  </div>
+
+
+</div>
